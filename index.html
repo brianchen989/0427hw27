@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Layout Exercise</title>
+    <title>Responsive Layout Exercise 27</title>
     <style>
-        /* 基礎樣式：背景與容器設定 */
+        /* 基礎樣式設定 */
         body {
-            background-color: #4dabf7; /* 藍色背景 */
-            margin: 0;
-            padding: 20px;
+            background-color: #55acee;
+            /* 藍色背景 */
+            margin: 20px;
             display: flex;
             justify-content: center;
         }
@@ -22,75 +23,87 @@
             max-width: 800px;
         }
 
-        /* 各區塊共用樣式 */
-        .section {
+        /* 頂部綠色區塊 */
+        .header {
+            background-color: #a6d14d;
+            height: 150px;
             margin-bottom: 15px;
             border-radius: 5px;
         }
 
-        /* 頂部綠色區塊 */
-        .header {
-            background-color: #a9d64d;
-            height: 150px;
-        }
-
         /* 中間青色區塊容器 */
-        .mid-group {
-            display: flex; /* 預設橫向排列 */
+        .row-middle {
+            display: flex;
+            flex-wrap: wrap;
             gap: 10px;
+            margin-bottom: 15px;
         }
 
-        .mid-item {
+        .box-cyan {
             background-color: #00bcd4;
-            height: 120px;
-            flex: 1; /* 平分寬度 */
+            height: 250px;
+            border-radius: 5px;
+            flex: 1;
+            /* 預設在寬螢幕平均分配空間 */
         }
 
-        /* 底部灰色區塊容器 */
-        .bottom-group {
-            display: flex; /* 預設橫向排列 */
+        /* 下方淺灰色區塊容器 */
+        .row-bottom {
+            display: flex;
+            flex-wrap: wrap;
             gap: 10px;
         }
 
-        .bottom-item {
-            background-color: #e9ecef;
-            height: 60px;
+        .box-light-gray {
+            background-color: #eeeeee;
+            height: 120px;
+            border-radius: 5px;
             flex: 1;
+            /* 預設為四欄佈局 */
+            min-width: 20%;
         }
 
-        /* --- 核心：Media Queries 排版切換 --- */
-        /* 當寬度小於 480px 時執行的樣式  */
-        @media screen and (max-width: 480px) {
-            .mid-group, .bottom-group {
-                flex-direction: column; /* 改為垂直堆疊  */
+        /* --- Media Query: 當寬度小於 480px 時 --- */
+        @media screen and (max-width: 800px) {
+            .row-middle {
+                flex-direction: column;
+                /* 轉為垂直堆疊 (a) */
             }
-            
-            /* 針對 (a) 圖，底部在小螢幕時改為兩排兩列 */
-            .bottom-group {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
+
+            .box-cyan {
+                flex: none;
+                /* 修正 flex-direction: column 時高度塌陷的問題 */
+                width: 100%;
+            }
+
+            .box-light-gray {
+                /* 轉為兩欄排版 (a) */
+                flex: none;
+                width: calc(50% - 5px);
             }
         }
     </style>
 </head>
+
 <body>
 
     <div class="container">
-        <div class="section header"></div>
+        <div class="header"></div>
 
-        <div class="section mid-group">
-            <div class="mid-item"></div>
-            <div class="mid-item"></div>
-            <div class="mid-item"></div>
+        <div class="row-middle">
+            <div class="box-cyan"></div>
+            <div class="box-cyan"></div>
+            <div class="box-cyan"></div>
         </div>
 
-        <div class="section bottom-group">
-            <div class="bottom-item"></div>
-            <div class="bottom-item"></div>
-            <div class="bottom-item"></div>
-            <div class="bottom-item"></div>
+        <div class="row-bottom">
+            <div class="box-light-gray"></div>
+            <div class="box-light-gray"></div>
+            <div class="box-light-gray"></div>
+            <div class="box-light-gray"></div>
         </div>
     </div>
 
 </body>
+
 </html>
