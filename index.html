@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Layout</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #4facfe;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-sizing: border-box;
+        }
+
+        .header {
+            background: #a3d944;
+            height: 100px;
+            border-radius: 5px;
+        }
+
+        .middle {
+            display: flex;
+            gap: 10px;
+        }
+
+        .blue {
+            background: #00b4d8;
+            height: 80px;
+            flex: 1;
+            border-radius: 5px;
+        }
+
+        .bottom {
+            display: flex;
+            gap: 10px;
+        }
+
+        .gray {
+            background: #e9ecef;
+            height: 40px;
+            flex: 1;
+            border-radius: 5px;
+        }
+
+        /* 當螢幕寬度小於或等於 480px 時 */
+        @media (max-width: 480px) {
+            .middle {
+                flex-direction: column;
+            }
+
+            .bottom {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 頂部綠色區塊 -->
+        <div class="header"></div>
+
+        <!-- 中間藍色區塊 (大於 480px 時為橫向，小於等於 480px 時為直向) -->
+        <div class="middle">
+            <div class="blue"></div>
+            <div class="blue"></div>
+            <div class="blue"></div>
+        </div>
+
+        <!-- 底部灰色區塊 (大於 480px 時為一排四個，小於等於 480px 時為 2x2 網格) -->
+        <div class="bottom">
+            <div class="gray"></div>
+            <div class="gray"></div>
+            <div class="gray"></div>
+            <div class="gray"></div>
+        </div>
+    </div>
+</body>
+
+</html>
